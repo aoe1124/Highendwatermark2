@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片加水印工具</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <h1>小红书高级感图片水印工具</h1>
+        <p>简单易用的在线图片水印工具，让您的图片更有价值</p>
+    </header>
+
+    <!-- 主要内容区 -->
+    <main class="main-content">
+        <!-- 左侧主要区域 -->
+        <div class="main-panel">
+            <!-- 上传区域 -->
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="fileInput" multiple accept="image/*" class="file-input">
+                <div class="upload-placeholder">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 24 24'%3E%3Cpath fill='%23666' d='M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z'/%3E%3C/svg%3E" alt="上传">
+                    <p>点击或拖拽图片到此处</p>
+                    <p class="sub-text">支持 PNG、JPG 等格式</p>
+                </div>
+            </div>
+
+            <!-- 缩略图预览区 -->
+            <div class="thumbnails-grid" id="thumbnailsGrid">
+                <!-- 缩略图将通过 JavaScript 动态添加 -->
+            </div>
+
+            <!-- 预览区域 -->
+            <div class="preview-container">
+                <div class="preview-original">
+                    <h3>原图预览</h3>
+                    <div id="originalPreview" class="preview-box"></div>
+                    <div class="file-info">
+                        <p>原始大小：<span id="originalSize">-</span></p>
+                    </div>
+                </div>
+                <div class="preview-watermark">
+                    <h3>效果预览</h3>
+                    <div id="watermarkPreview" class="preview-box"></div>
+                    <div class="file-info">
+                        <p>处理后大小：<span id="processedSize">-</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧设置面板 -->
+        <div class="settings-panel">
+            <h3>水印设置</h3>
+            
+            <!-- 添加模板选择 -->
+            <div class="settings-group">
+                <label for="watermarkTemplate">选择模板</label>
+                <select id="watermarkTemplate" class="template-select">
+                    <option value="template1">生活记录</option>
+                    <option value="template2">温暖日常</option>
+                    <option value="template3">治愈时光</option>
+                </select>
+            </div>
+
+            <div class="settings-group">
+                <label for="watermarkText">签名文字</label>
+                <input type="text" id="watermarkText" placeholder="请输入您的签名">
+            </div>
+
+            <div class="settings-group">
+                <label for="fontSize">字体大小</label>
+                <input type="range" id="fontSize" min="12" max="72" value="24">
+                <span id="fontSizeValue">24px</span>
+            </div>
+
+            <div class="settings-group">
+                <label for="opacity">透明度</label>
+                <input type="range" id="opacity" min="0" max="100" value="80">
+                <span id="opacityValue">80%</span>
+            </div>
+
+            <div class="settings-group">
+                <label for="color">字体颜色</label>
+                <input type="color" id="color" value="#ffffff">
+            </div>
+
+            <div class="settings-group">
+                <label for="quality">导出质量</label>
+                <input type="range" id="quality" min="1" max="100" value="90">
+                <span id="qualityValue">90%</span>
+            </div>
+
+            <div class="download-buttons">
+                <button id="downloadSingle" class="button primary">下载当前图片</button>
+                <button id="downloadAll" class="button secondary">打包下载全部</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- 放大预览模态框 -->
+    <div id="previewModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="modal-image-container">
+                <img id="modalImage" src="" alt="预览图片">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
