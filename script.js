@@ -2,10 +2,10 @@
 let currentImages = []; // 存储所有上传的图片
 let currentImageIndex = 0; // 当前显示的图片索引
 let watermarkSettings = {
-    text: '',
+    text: '小红书@养心美学',
     fontSize: 24,
     opacity: 0.5,
-    color: '#000000',
+    color: '#ffffff',
     position: 'bottom-right'
 };
 
